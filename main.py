@@ -1,4 +1,4 @@
-import csv, os
+import csv, os, shutil
 import mysql.connector
 
 
@@ -38,11 +38,11 @@ def parse_csv(filename):
             mycursor.execute(sql, val)
             mydb.commit()
             line_count += 1
-        print(f'Processed {line_count} lines.')
+        print(f'Processed {line_count-1} lines.')
 
 
 # define the folder to search
-path = "data"
+path = "data/unprocessed"
 
 # change directory
 os.chdir(path)
@@ -53,3 +53,5 @@ for file in os.listdir():
     if file.endswith(".csv"):
         # read files.
         parse_csv(file)
+        # move file to processed folder
+        shutil.move(file, "../processed")

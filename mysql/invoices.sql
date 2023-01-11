@@ -1,3 +1,4 @@
+CREATE SCHEMA `parse` ;
 CREATE TABLE `invoices` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `accountId` int NOT NULL,
